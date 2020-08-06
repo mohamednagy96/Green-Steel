@@ -59,6 +59,13 @@
               </a>
             </li>
             @endcan
+            @can('categories_list')
+            <li>
+              <a href="{{route('admin.categories.index')}}">
+                <i class="fa fa-paperclip"></i> <span>{{ __('Categories') }}</span>
+              </a>
+            </li>
+            @endcan
         </ul>
     </section>
     <!-- /.sidebar -->

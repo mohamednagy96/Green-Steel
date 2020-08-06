@@ -27,14 +27,24 @@ return [
             'products_create',
             'products_edit',
             'products_delete',
-
         ],
         'services' => [
             'services_list',
             'services_create',
             'services_edit',
             'services_delete',
-
+        ],
+        'categories'=>[
+            'categories_list',
+            'categories_create',
+            'categories_edit',
+            'categories_delete',
+        ],
+        'companies'=>[
+            'companies_list',
+            'companies_create',
+            'companies_edit',
+            'companies_delete',
         ],
         'About us' => [
             'about_list',

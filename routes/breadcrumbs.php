@@ -57,25 +57,6 @@ Breadcrumbs::for('settings', function ($trail) {
 });
 
 /**
- * Dashorad
- * Client
- */
-Breadcrumbs::for('clients',function($trail){
-    $trail->parent('home');
-    $trail->push('Our Clients',route('admin.ourclients.index'));
-});
-
-Breadcrumbs::for('create client',function($trail){
-    $trail->parent('clients');
-    $trail->push('Create Client',route('admin.ourclients.create'));
-});
-
-Breadcrumbs::for('update client',function($trail,$model){
-    $trail->parent('clients');
-    $trail->push('Update'.' ( '.$model->name.' )', route('admin.ourclients.edit', $model->id));
-});
-
-/**
  * Dashboard
  * Contact
  */
@@ -94,17 +75,17 @@ Breadcrumbs::for('update contact',function($trail,$model){
 
 /**
  * Dashboard
- * Slider
+ * Category
  */
-Breadcrumbs::for('sliders',function($trail){
+Breadcrumbs::for('categories',function($trail){
     $trail->parent('home');
-    $trail->push('Slider',route('admin.sliders.index'));
+    $trail->push('Categories',route('admin.categories.index'));
 });
-Breadcrumbs::for('create slider',function($trail){
-    $trail->parent('sliders');
-    $trail->push('Create Slider',route('admin.sliders.create'));
+Breadcrumbs::for('create category',function($trail){
+    $trail->parent('categories');
+    $trail->push('Create Category',route('admin.categories.create'));
 });
-Breadcrumbs::for('update slider',function($trail,$model){
-    $trail->parent('sliders');
-    $trail->push('Update'.' ( '.$model->name . ' ) ',route('admin.sliders.edit',$model->id));
+Breadcrumbs::for('update category',function($trail,$model){
+    $trail->parent('categories');
+    $trail->push('Update'.' ( '.$model->name . ' ) ',route('admin.categories.edit',$model->id));
 });

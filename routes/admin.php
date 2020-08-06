@@ -29,7 +29,6 @@ Route::resource('aboutus', 'AboutUsController');
  */
 Route::get('settings', 'SettingController@index')->name('settings.index');
 Route::post('setting/update','SettingController@update')->name('settings.update');
-Route::resource('subscribers', 'SubscriberController');
 /**
  * media
  */
@@ -44,6 +43,10 @@ Route::get('search','HomeController@search');
  */
 Route::resource('contacts','ContactController');
 
+/**
+ * Categories
+ */
+Route::resource('categories','CategoryController');
 
 
 

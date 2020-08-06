@@ -21,4 +21,9 @@ class Category extends Model implements HasMedia
         return $this->belongsToMany(Company::class,'companies_categories');
     }
 
+    public function image(){
+        return $this->morphOne(config('medialibrary.media_model'), 'model');
+    }
+
+
 }
