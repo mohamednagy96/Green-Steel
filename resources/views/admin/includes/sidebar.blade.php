@@ -11,14 +11,14 @@
                   <i class="fa fa-user"></i> <span>{{ __('Admins') }}</span>
                 </a>
             </li>
-{{-- 
+
             @can('roles_list')
                 <li>
                     <a href="{{ route('admin.roles.index') }}">
                     <i class="fa fa-user"></i> <span>{{ __('Roles') }}</span>
                     </a>
                 </li>
-            @endcan --}}
+            @endcan
 
             @can('about_list')
             <li>
