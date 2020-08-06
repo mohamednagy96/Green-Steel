@@ -17,8 +17,6 @@ class ServicesSeeder extends Seeder
             Service::Create([
                 'name'=>$faker->name,
                 'description'=>$faker->text(50),
-                'slug'=>$faker->unique()->slug,
-                'invisible'=>rand(0,1)
             ]);
         }
     }

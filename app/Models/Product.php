@@ -25,12 +25,12 @@ class Product extends Model implements HasMedia
         return $this->morphOne(config('medialibrary.media_model'), 'model')->where('isDefault', 1);
     }
 
-    public function companies(){
-        return $this->belongsToMany(Company::class,'companies_products');
-    }
 
     public function category(){
         return $this->belongsTo(Category::class);
     }
 
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
 }

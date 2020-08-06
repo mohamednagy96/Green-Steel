@@ -15,6 +15,10 @@ class Company extends Model implements HasMedia
     ]; 
     
     public function products(){
-        return $this->belongsToMany(Product::class,'companies_products');
+        return $this->hasMany(Product::class,'product_id');
+    }
+    
+    public function categories(){
+        return $this->belongsToMany(Category::class,'companies_categories');
     }
 }
