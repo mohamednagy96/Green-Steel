@@ -13,7 +13,7 @@ class Product extends Model implements HasMedia
     use HasMediaTrait ,PackageItemTrait;
 
     protected $fillable = [
-        'name', 'slug','description','invisible'
+        'name','description','company_id','category_id'
     ];
 
     public function images(){
@@ -23,6 +23,14 @@ class Product extends Model implements HasMedia
 
     public function image(){
         return $this->morphOne(config('medialibrary.media_model'), 'model')->where('isDefault', 1);
+    }
+
+    public function companies(){
+        return $this->belongsToMany(Company::class,'companies_products');
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
 }
