@@ -48,5 +48,5 @@
 @endif
 <hr>
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">{{ isset($category) ? 'Update' : 'Create' }}</button>
+    <button type="submit" class="btn btn-primary">{{ isset($company) ? 'Update' : 'Create' }}</button>
 </div>

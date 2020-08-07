@@ -22,7 +22,7 @@ class Product extends Model implements HasMedia
     }
 
     public function image(){
-        return $this->morphOne(config('medialibrary.media_model'), 'model')->where('isDefault', 1);
+        return $this->morphOne(config('medialibrary.media_model'), 'model');
     }
 
 

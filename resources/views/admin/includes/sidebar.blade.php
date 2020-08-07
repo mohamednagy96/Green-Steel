@@ -74,6 +74,14 @@
               </a>
             </li>
             @endcan
+
+            @can('products_list')
+            <li>
+              <a href="{{route('admin.products.index')}}">
+                <i class="fa fa-paperclip"></i> <span>{{ __('products') }}</span>
+              </a>
+            </li>
+            @endcan
         </ul>
     </section>
     <!-- /.sidebar -->

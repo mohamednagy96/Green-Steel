@@ -108,3 +108,22 @@ Breadcrumbs::for('update company',function($trail,$model){
     $trail->push('Update'.' ( '.$model->name . ' ) ',route('admin.companies.edit',$model->id));
 });
 
+
+/**
+ * Dashboard
+ * Product
+ */
+Breadcrumbs::for('products',function($trail){
+    $trail->parent('home');
+    $trail->push('Products',route('admin.products.index'));
+});
+Breadcrumbs::for('create product',function($trail){
+    $trail->parent('products');
+    $trail->push('Create Product',route('admin.products.create'));
+});
+Breadcrumbs::for('update product',function($trail,$model){
+    $trail->parent('products');
+    $trail->push('Update'.' ( '.$model->name . ' ) ',route('admin.products.edit',$model->id));
+});
+
+

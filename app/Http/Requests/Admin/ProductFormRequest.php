@@ -26,11 +26,7 @@ class ProductFormRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'slug'=>'required|unique:products',
             'description'=>'nullable',
-            'seo.title'=>'nullable',
-            'seo.description'=>'nullable',
-            'seo.keyword'=>'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ];
     }

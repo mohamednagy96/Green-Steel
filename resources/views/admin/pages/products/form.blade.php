@@ -3,10 +3,6 @@
     {{ Form::text('name', null , ['class' => 'form-control', 'required' => true]) }}
 </div>
 
-<div class="form-group">
-    <label for="">Slug</label>
-    {{ Form::text('slug', null , ['class' => 'form-control', 'required' => true]) }}
-</div>
 
 <div class="form-group">
     <label for="">Description</label>
@@ -14,16 +10,19 @@
 </div>
 
 <div class="form-group">
-    <label for="">inVisible</label>
-    {{ Form::checkbox('invisible', 1 , isset($product) ? $product->invisable : false ) }}
+    <label for="">Category</label>
+    {{ Form::select('category_id',$category ,null, ['class' => 'form-control', 'required' => true, 'placeholder' => '-- Category --']) }}
 </div>
 
 <div class="form-group">
-    <label for="">Images</label>
-    {!! Form::file('images[]' ,['multiple' => 'multiple']) !!}
+    <label for="">Company</label>
+    {{ Form::select('company_id',$company ,null, ['class' => 'form-control', 'required' => true, 'placeholder' => '-- Company --']) }}
 </div>
 
-@include('admin.components.seo')
+<div class="form-group">
+    <label for="">Image</label>
+    {!! Form::file('image') !!}
+</div>
 
 
 <hr>

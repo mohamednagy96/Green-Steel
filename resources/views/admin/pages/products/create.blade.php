@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master',['breadcrumb'=>'create product'])
 
 
 @section('content')

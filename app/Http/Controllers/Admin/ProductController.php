@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductFormRequest;
 use App\Http\Resources\FilesResource;
+use App\Models\Category;
+use App\Models\Company;
 use App\Models\Product;
 use App\services\MediaService;
 use Illuminate\Http\Request;
@@ -38,7 +40,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.products.create');
+        $company=Company::pluck('name','id')->toArray();
+        $category=Category::pluck('name','id')->toArray();
+        return view('admin.pages.products.create',compact('company','category'));
     }
 
     /**
@@ -50,16 +54,11 @@ class ProductController extends Controller
     public function store(ProductFormRequest $request)
     {
         $requestData = $request->all();
-
-        $requestData['invisible'] = $request->invisable ?? 0;
-
         $product = Product::create($requestData);
-
-        MediaService::uploadFiles($request->images, $product, 'image');
-
-        $product->seo()->create($request->seo);
-
-        return redirect()->route('admin.products.index');
+        if($request->has('image')){
+            MediaService::uploadFile($request->image, $product, 'image');
+        }
+        return redirect()->route('admin.products.index')->with(['success'=>'Save Product']);
     }
 
     /**
@@ -70,7 +69,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.pages.products.edit', compact('product'));
+        $company=Company::pluck('name','id')->toArray();
+        $category=Category::pluck('name','id')->toArray();
+        return view('admin.pages.products.edit', compact('product','company','category'));
     }
 
     /**
@@ -83,16 +84,11 @@ class ProductController extends Controller
     public function update(ProductFormRequest $request, Product $product)
     {
         $requestData = $request->all();
-
-        $requestData['invisible'] = $request->invisable ?? 0;
-
         $product->update($requestData);
-
-        MediaService::uploadFiles($request->images, $product, 'image');
-
-        $product->seo()->update($request->seo);
-
-        return redirect()->back();
+        if($request->has('image')){
+            MediaService::updateFile($request->image, $product, 'image');
+        }
+        return redirect()->route('admin.products.index')->with(['success'=>'Update Product']);
     }
 
     public function destroy(Product $product)

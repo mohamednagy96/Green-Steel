@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master',['breadcrumb'=>'products'])
 @section('content')
 
 @component('admin.components.box', ['title'=>'Procuts List', 'create' =>
@@ -10,25 +10,25 @@ route('admin.products.create'),'can'=>'products_create'])
             <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
-            <th scope="col">Invisible</th>
+            <th scope="col">Company</th>
+            <th scope="col">Category</th>
+            <th scope="col">Image</th>
             <th>{{ __('Created At') }}</th>
-            <th>
-                Image
-            </th>
             <th scope="col">Option</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($products as $product)
+        @forelse($products as $product)
         <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ Str::limit($product->description, 30)  }}</td>
-            <td> {{ $product->invisible ? 'invisible' : 'visible'  }} </td>
-            <td>{{ $product->created_at->diffForhumans() }}</td>
+            <td>{{ $product->category->name }}</td>
+            <td>{{ $product->company->name }}</td>
             <td>
                 <img src="{{ $product->image ? $product->image->getUrl() : asset('images/default.jpg') }}" alt="" width="100px">
             </td>
+            <td>{{ $product->created_at->diffForhumans() }}</td>
             <td>
                 @can('products_edit')
                 <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary btn-xs">
@@ -43,7 +43,15 @@ route('admin.products.create'),'can'=>'products_create'])
                 @endcan
             </td>
         </tr>
-        @endforeach
+        @empty
+        <tr>
+            <td colspan="8">
+                <div class="alert alert-warning text-center" role="alert">
+                    <strong>{{ __('No records found') }}</strong>
+                </div>
+            </td>
+        </tr>
+    @endforelse
     </tbody>
 </table>
 

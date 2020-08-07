@@ -26,7 +26,7 @@ route('admin.companies.create'),'can'=>'companies_create'])
             @if($company->categories->count() > 0)
                 <td>
                     @foreach ($company->categories as $category)
-                        <span class="label label-primary">{{$category->name}}</span>
+                        <span class="label label-primary">{{$category->name}}</span> <br>
                     @endforeach
                 </td>
             @else
