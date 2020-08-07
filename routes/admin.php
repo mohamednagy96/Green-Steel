@@ -48,6 +48,11 @@ Route::resource('contacts','ContactController');
  */
 Route::resource('categories','CategoryController');
 
+/**
+ * Companies
+ */
+Route::resource('companies','CompanyController');
+
 
 
 

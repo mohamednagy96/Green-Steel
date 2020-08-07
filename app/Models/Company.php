@@ -11,7 +11,7 @@ class Company extends Model implements HasMedia
     use HasMediaTrait ;
 
     protected $fillable = [
-        'name','description','company_id','category_id'
+        'name','description'
     ]; 
     
     public function products(){
@@ -20,5 +20,9 @@ class Company extends Model implements HasMedia
     
     public function categories(){
         return $this->belongsToMany(Category::class,'companies_categories');
+    }
+    
+    public function image(){
+        return $this->morphOne(config('medialibrary.media_model'), 'model');
     }
 }

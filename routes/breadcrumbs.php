@@ -89,3 +89,22 @@ Breadcrumbs::for('update category',function($trail,$model){
     $trail->parent('categories');
     $trail->push('Update'.' ( '.$model->name . ' ) ',route('admin.categories.edit',$model->id));
 });
+
+
+/**
+ * Dashboard
+ * Company
+ */
+Breadcrumbs::for('companies',function($trail){
+    $trail->parent('home');
+    $trail->push('Companies',route('admin.companies.index'));
+});
+Breadcrumbs::for('create company',function($trail){
+    $trail->parent('companies');
+    $trail->push('Create Company',route('admin.companies.create'));
+});
+Breadcrumbs::for('update company',function($trail,$model){
+    $trail->parent('companies');
+    $trail->push('Update'.' ( '.$model->name . ' ) ',route('admin.companies.edit',$model->id));
+});
+

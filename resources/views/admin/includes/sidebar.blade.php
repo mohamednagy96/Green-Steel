@@ -66,6 +66,14 @@
               </a>
             </li>
             @endcan
+
+            @can('companies_list')
+            <li>
+              <a href="{{route('admin.companies.index')}}">
+                <i class="fa fa-paperclip"></i> <span>{{ __('Companies') }}</span>
+              </a>
+            </li>
+            @endcan
         </ul>
     </section>
     <!-- /.sidebar -->
