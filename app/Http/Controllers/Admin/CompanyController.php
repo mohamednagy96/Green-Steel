@@ -78,7 +78,9 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         $categories=Category::all();
-        return view('admin.pages.companies.edit', compact('company','categories'));
+        $companyCategories=$company->categories->pluck('id')->toArray();
+        // dd($companyCategories);
+        return view('admin.pages.companies.edit', compact('company','categories','companyCategories'));
     }
 
     /**
