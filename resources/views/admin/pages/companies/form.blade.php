@@ -24,7 +24,7 @@
 
     <table class="table">
             <tr>
-                <td><img src="{{ $category->image ? $category->image->getUrl() : asset('images/default.jpg') }}" alt="" width="100px">
+                <td><img src="{{ $category->image ? $category->image->getUrl() : asset('images/default.jpg') }}" alt="" width="200px">
                 </td>
                 <td>  <label for="">Images</label>
                     {!! Form::file('image') !!}

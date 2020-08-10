@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/adminlte.css?'.rand()) }}">
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
     {{-- <!-- FireBase-->
@@ -38,5 +39,14 @@ firebase.initializeApp(firebaseConfig);
     <!-- FireBase-------------------------------->
 
       
+    <script>
+        $('#company').on('change',function(e){
+            console.log(e);
+            var company_id = e.target.value;
+            $.get('/ajax-subcat?company_id=' + company_id,function(data){
+                consloe.log(data)
+            })
 
+        });
+    </script>
 </head>

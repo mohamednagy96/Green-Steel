@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Company;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -54,5 +57,18 @@ Route::resource('categories','CategoryController');
 Route::resource('companies','CompanyController');
 
 
+/**
+ * Blogs
+ */
+Route::resource('blogs','BlogController');
 
 
+
+
+
+Route::get('/ajax-subcat',function(){
+    $cat_id=Request::input('company_id');
+    $company=Company::find($cat_id);
+    $categories=$company->categories;
+    return response()->json($categories);
+});

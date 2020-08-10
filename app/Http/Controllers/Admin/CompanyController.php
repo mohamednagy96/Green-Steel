@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CompanyRequset;
 use App\Models\Category;
 use App\Models\Company;
 use App\services\MediaService;
@@ -45,7 +46,7 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequset $request)
     {
         // dd($request->all());
         $company=Company::create($request->company);
@@ -90,9 +91,9 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyRequset $request, Company $company)
     {
-        
+        // dd($request->all());?
         $company->update($request->company);
         if ($request->categories) {
             $company->categories()->sync($request->categories);

@@ -11,5 +11,4 @@
 
 {!! Form::close() !!}
 @endcomponent
-@include('admin.components.images_box', ['model' => $service])
 @endsection

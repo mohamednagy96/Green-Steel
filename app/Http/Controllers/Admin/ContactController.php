@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ContactUsRequest;
 use App\Http\Requests\ContactRequest;
 use App\Models\ContactUs;
 use App\Models\Service;
@@ -34,7 +35,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.contacts.create',['services'=>Service::pluck('name','id')->toArray()]);
+        return view('admin.pages.contacts.create');
     }
 
     /**
@@ -43,10 +44,11 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactRequest $request)
+    public function store(ContactUsRequest $request)
     {
+        // dd($request->all());
      $contact=ContactUs::create($request->all());
-     return $this->redirectRouteWithSuccessStore();
+     return redirect()->route('admin.contacts.index')->with('success', 'Data is Saved .. !!');
 
     }
 
@@ -70,7 +72,7 @@ class ContactController extends Controller
     public function edit($id)
     {
         $contact=ContactUs::findOrFail($id);
-        return view('admin.pages.contacts.edit',['contact'=>$contact,'services'=>Service::pluck('name','id')->toArray()]);
+        return view('admin.pages.contacts.edit',['contact'=>$contact]);
 
     }
 
@@ -81,11 +83,12 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ContactRequest $request, $id)
+    public function update(ContactUsRequest $request, $id)
     {
         $contact=ContactUs::findOrFail($id);
         $contact->update($request->all());
         return redirect()->route('admin.contacts.index')->with('success', 'Data is Update .. !!');
+
         
     }
 

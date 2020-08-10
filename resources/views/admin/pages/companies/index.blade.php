@@ -52,7 +52,7 @@ route('admin.companies.create'),'can'=>'companies_create'])
         </tr>
         @empty
         <tr>
-            <td colspan="6">
+            <td colspan="7">
                 <div class="alert alert-warning text-center" role="alert">
                     <strong>{{ __('No records found') }}</strong>
                 </div>

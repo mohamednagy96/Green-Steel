@@ -49,17 +49,11 @@ class ServiceController extends Controller
     public function store(ServicesFormRequest $request)
     {
         $requestData = $request->all();
-
-        $requestData['invisible'] = $request->invisable ?? 0;
-
         $service = Service::create($requestData);
-
-        MediaService::uploadFiles($request->images, $service);
-
-        $service->seo()->create($request->seo);
-
-        return redirect()->route('admin.services.index');
-     
+        if ($request->hasfile('image')) {
+            MediaService::uploadFile($request->file('image'), $service);
+       }
+        return redirect()->route('admin.services.index')->with('success', 'Data is Saved .. !!');
     }
 
     /**
@@ -95,15 +89,11 @@ class ServiceController extends Controller
     {
         $requestData = $request->all();
 
-        $requestData['invisible'] = $request->invisable ?? 0;
-
         $service->update($requestData);
-
-        MediaService::uploadFiles($request->images, $service);
-
-        $service->seo()->update($request->seo);
-
-        return redirect()->back();
+        if ($request->hasfile('image')) {
+            MediaService::updateFile($request->image, $service);
+       }
+        return redirect()->route('admin.services.index')->with('success', 'Data is updated .. !!');
     //     $service->update($request->all());
     //     $service->seo()->update($request->seo); 
     //     if ($request->hasfile('files')) {

@@ -19,46 +19,6 @@
                     </a>
                 </li>
             @endcan
-
-            @can('about_list')
-            <li>
-                <a href="{{ route('admin.aboutus.index') }}">
-                  <i class="fa fa-home"></i> <span>{{ __('AboutUs') }}</span>
-                </a>
-            </li>
-            @endcan
-
-            {{-- @can('clients_list')
-            <li>
-                <a href="{{ route('admin.ourclients.index') }}">
-                  <i class="fa fa-users"></i> <span>{{ __('Our Clients') }}</span>
-                </a>
-            </li>
-            @endcan --}}
-
-
-            @can('services_list')
-            <li>
-                <a href="{{ route('admin.services.index') }}">
-                  <i class="fa fa-paperclip"></i> <span>{{ __('services') }}</span>
-                </a>
-            </li>
-            @endcan
-
-            @can('settings_list')
-            <li>
-                <a href="{{ route('admin.settings.index') }}">
-                  <i class="fa fa-paperclip"></i> <span>{{ __('Settings') }}</span>
-                </a>
-            </li>
-            @endcan
-            @can('contacts_list')
-            <li>
-              <a href="{{route('admin.contacts.index')}}">
-                <i class="fa fa-paperclip"></i> <span>{{ __('Contact Us') }}</span>
-              </a>
-            </li>
-            @endcan
             @can('categories_list')
             <li>
               <a href="{{route('admin.categories.index')}}">
@@ -82,6 +42,45 @@
               </a>
             </li>
             @endcan
+            @can('blogs_list')
+            <li>
+              <a href="{{route('admin.blogs.index')}}">
+                <i class="fa fa-paperclip"></i> <span>{{ __('blogs') }}</span>
+              </a>
+            </li>
+            @endcan
+            @can('services_list')
+            <li>
+                <a href="{{ route('admin.services.index') }}">
+                  <i class="fa fa-paperclip"></i> <span>{{ __('services') }}</span>
+                </a>
+            </li>
+            @endcan
+            @can('contacts_list')
+            <li>
+              <a href="{{route('admin.contacts.index')}}">
+                <i class="fa fa-paperclip"></i> <span>{{ __('Contact Us') }}</span>
+              </a>
+            </li>
+            @endcan
+            @can('about_list')
+            <li>
+                <a href="{{ route('admin.aboutus.index') }}">
+                  <i class="fa fa-home"></i> <span>{{ __('AboutUs') }}</span>
+                </a>
+            </li>
+            @endcan
+
+
+            @can('settings_list')
+            <li>
+                <a href="{{ route('admin.settings.index') }}">
+                  <i class="fa fa-paperclip"></i> <span>{{ __('Settings') }}</span>
+                </a>
+            </li>
+            @endcan
+
+
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -2,8 +2,11 @@
 
 //use GuzzleHttp\Psr7\Request;
 
+use App\Models\Company;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
+
 
 
 Route::auth();
@@ -21,5 +24,14 @@ Route::get('apidocs', function(){
 });
 
 Route::get('search','HomeController@search');
+
+Route::get('/ajax-subcat',function(){
+    $cat_id=Request::input('company_id');
+    $company=Company::find($cat_id);
+    $categories=$company->categories;
+    return response()->json($categories);
+});
+
+
 
 ?>

@@ -9,11 +9,8 @@
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
-      <th scope="col">Slug</th>
-      <th scope="col">Invisible</th>
-      <th>{{ __('Created At') }}</th>
-
       <th>{{ __('images') }}</th>
+      <th>{{ __('Created At') }}</th>
       <th scope="col">Option</th>
     </tr>
   </thead>
@@ -23,18 +20,11 @@
         <td>{{ $service->id }}</td>
       <td>{{ __($service->name) }}</td>
       <td>{{ __($service->description) }}</td>
-
-      <td>{{ $service->slug }}</td>
-      @if( $service->invisible  == 0 )
-      <td> invisible </td>
-      @else
-      <td> visible </td>
-       @endif
-       <td>{{ $service->created_at->diffForhumans() }}</td>
       <td>
-                <img src="{{ $service->image ? $service->image->getUrl() : asset('images/default.jpg') }}" alt="" width="100px">
-            </td>
-       <td>
+        <img src="{{ $service->image ? $service->image->getUrl() : asset('images/default.jpg') }}" alt="" width="100px">
+      </td>
+      <td>{{ $service->created_at->diffForhumans() }}</td>
+      <td>
        @can('services_edit')
 
                 <a href="{{ route('admin.services.edit', $service->id) }}" class="btn btn-primary btn-xs">

@@ -26,11 +26,9 @@ class ServicesFormRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'slug'=>'required|unique',
             'description'=>'nullable',
-            'seo.title'=>'nullable',
-            'seo.description'=>'nullable',
-            'seo.keyword'=>'nullable'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+
         ];
     }
     

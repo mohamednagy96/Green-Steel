@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AboutUsRequest;
 use App\Models\About;
 use App\services\MediaService;
 use Illuminate\Http\Request;
 
 class AboutUsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:about_list')->only(['index']);
+        $this->middleware('permission:about_create')->only(['create', 'store']);
+        $this->middleware('permission:about_edit')->only(['edit', 'update']);
+        $this->middleware('permission:about_delete')->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +47,7 @@ class AboutUsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AboutUsRequest $request)
     {
         $aboutUs= About::create($request->all());
         if ($request->hasfile('image')) {
@@ -65,10 +74,10 @@ class AboutUsController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $aboutus)
+    public function edit($id)
     {
+        $aboutus=About::find($id);
         return view('admin.pages.aboutus.edit', compact('aboutus'));
-
     }
 
     /**
@@ -78,8 +87,9 @@ class AboutUsController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, About $aboutus)
+    public function update(AboutUsRequest $request, $id)
     {
+        $aboutus=About::find($id);
         $aboutus->update($request->all());
         if ($request->hasfile('image')) {
             MediaService::updateFile($request->file('image'), $aboutus);

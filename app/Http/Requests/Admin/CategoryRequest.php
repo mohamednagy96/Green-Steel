@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Http\Requests\BaseFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductFormRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +26,7 @@ class ProductFormRequest extends FormRequest
         return [
             'name'=>'required',
             'description'=>'required',
-            'category_id'=>'required',
-            'company_id'=>'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ];
     }
-
 }

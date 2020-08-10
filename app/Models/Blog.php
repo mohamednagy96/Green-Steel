@@ -11,7 +11,11 @@ class Blog extends Model implements HasMedia
     use HasMediaTrait ;
     
     protected $fillable = [
-        'name','description'
+        'title','content'
     ]; 
+
+    public function image(){
+        return $this->morphOne(config('medialibrary.media_model'), 'model');
+    }
 
 }

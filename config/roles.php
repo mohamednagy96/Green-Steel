@@ -62,6 +62,12 @@ return [
             'contacts_edit',
             'contacts_delete',
         ],
+        'Blogs' => [
+            'blogs_list',
+            'blogs_create',
+            'blogs_edit',
+            'blogs_delete',
+        ],
     ]
 
 ];

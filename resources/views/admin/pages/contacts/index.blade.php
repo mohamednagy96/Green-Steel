@@ -26,7 +26,6 @@
             <td>{{ $contact->subject }}</td>
             <td>{{ Str::limit($contact->message,30) }}</td>
             <td>{{ $contact->phone }}</td>
-            <td>{{ $contact->service->name }}</td>
             <td>{{ $contact->created_at->diffForHumans() }}</td>
 
             <td>

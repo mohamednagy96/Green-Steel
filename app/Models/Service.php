@@ -11,7 +11,7 @@ class Service extends Model implements HasMedia
 {
     use  HasMediaTrait,PackageItemTrait;
     protected $fillable = [
-        'name', 'slug','description','invisible'
+        'name','description'
     ];
     public function images(){
         
@@ -19,7 +19,7 @@ class Service extends Model implements HasMedia
     }
 
     public function image(){
-        return $this->morphOne(config('medialibrary.media_model'), 'model')->where('isDefault', 1);
+        return $this->morphOne(config('medialibrary.media_model'), 'model');
     }
 
     public function contacts(){
